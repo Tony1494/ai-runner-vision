@@ -64,9 +64,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				runner: {
-					light: '#E0F2FE',
-					DEFAULT: '#38BDF8',
-					dark: '#0284C7'
+					light: '#B4E1FF',
+					DEFAULT: '#0EA5E9',
+					dark: '#0369A1',
+					energy: '#F97316',
+					accent: '#8B5CF6',
+					success: '#10B981',
+					warning: '#F59E0B'
 				}
 			},
 			borderRadius: {

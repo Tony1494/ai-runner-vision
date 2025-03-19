@@ -3,6 +3,8 @@ import Hero from '@/components/home/Hero';
 import Features from '@/components/home/Features';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import Testimonials from '@/components/home/Testimonials';
+import RunnerLogo from '@/components/home/RunnerLogo';
 
 const Index = () => {
   return (
@@ -11,19 +13,24 @@ const Index = () => {
       <main className="flex-1 pt-20">
         <Hero />
         <Features />
+        <Testimonials />
         
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-gradient-to-b from-white to-runner-light/30">
           <div className="container mx-auto px-4 md:px-6">
             <div className="max-w-3xl mx-auto text-center">
-              <h2 className="text-4xl font-bold mb-6">Preparati a correre come mai prima d'ora</h2>
+              <RunnerLogo className="w-24 h-24 mx-auto mb-8" animate={true} />
+              <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-runner to-runner-accent bg-clip-text text-transparent">
+                Supera i tuoi limiti. Oggi.
+              </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Unisciti a migliaia di runner che hanno già migliorato le loro prestazioni grazie ai nostri piani di allenamento personalizzati e alle analisi AI.
+                Ogni campione ha iniziato esattamente da dove sei tu ora. <span className="font-semibold">La differenza?</span> Hanno avuto gli strumenti giusti. 
+                Unisciti a migliaia di runner che hanno trasformato le loro performance grazie ai nostri piani di allenamento alimentati dall'AI.
               </p>
               <a 
                 href="/dashboard" 
-                className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-runner hover:bg-runner-dark text-white font-medium transition-colors"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gradient-to-r from-runner to-runner-accent text-white font-medium transition-all hover:shadow-lg hover:-translate-y-1"
               >
-                Inizia il tuo viaggio
+                Inizia la tua evoluzione
               </a>
             </div>
           </div>

@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils';
 
 interface ChipProps {
   label: string;
-  color?: 'blue' | 'green' | 'purple' | 'orange' | 'gray';
+  color?: 'blue' | 'green' | 'purple' | 'orange' | 'gray' | 'energy' | 'accent';
   size?: 'sm' | 'md';
   className?: string;
 }
@@ -16,11 +16,13 @@ const Chip = ({
   className 
 }: ChipProps) => {
   const colorStyles = {
-    blue: 'bg-blue-100 text-blue-800',
-    green: 'bg-green-100 text-green-800',
-    purple: 'bg-purple-100 text-purple-800',
-    orange: 'bg-orange-100 text-orange-800',
+    blue: 'bg-runner/10 text-runner-dark',
+    green: 'bg-runner-success/10 text-runner-success',
+    purple: 'bg-runner-accent/10 text-runner-accent',
+    orange: 'bg-runner-energy/10 text-runner-energy',
     gray: 'bg-gray-100 text-gray-800',
+    energy: 'bg-gradient-to-r from-runner-energy to-runner-warning text-white',
+    accent: 'bg-gradient-to-r from-runner to-runner-accent text-white',
   };
 
   const sizeStyles = {
@@ -31,7 +33,7 @@ const Chip = ({
   return (
     <span
       className={cn(
-        'inline-block rounded-full font-medium',
+        'inline-block rounded-full font-medium shadow-sm',
         colorStyles[color],
         sizeStyles[size],
         className
