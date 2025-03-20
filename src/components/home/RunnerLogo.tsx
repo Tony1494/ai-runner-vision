@@ -21,47 +21,83 @@ const RunnerLogo = ({ className, animate = false }: RunnerLogoProps) => {
           fill="none" 
           xmlns="http://www.w3.org/2000/svg"
           className={cn(
-            'w-1/2 h-1/2 text-runner',
+            'w-3/5 h-3/5 text-runner',
             animate && 'animate-pulse-light'
           )}
         >
+          {/* Head */}
+          <circle cx="14" cy="4" r="2" fill="currentColor" />
+          
+          {/* Body parts */}
           <path 
-            d="M13.5 5.5C14.3284 5.5 15 4.82843 15 4C15 3.17157 14.3284 2.5 13.5 2.5C12.6716 2.5 12 3.17157 12 4C12 4.82843 12.6716 5.5 13.5 5.5Z" 
-            fill="currentColor" 
-          />
-          <path 
-            d="M6.5 19.5C6.5 20.3284 5.82843 21 5 21C4.17157 21 3.5 20.3284 3.5 19.5C3.5 18.6716 4.17157 18 5 18C5.82843 18 6.5 18.6716 6.5 19.5Z" 
-            fill="currentColor" 
-          />
-          <path 
-            d="M21 10.8182L17.4682 9.84091L14.5 13L12.5 8L8.18182 10.1818L7 14L11 16L15.5 14L17.4682 12.5L21 13.5V10.8182Z" 
+            d="M12 7L15 10L18 8.5L21 10.5L19 13L15 11.5L13 15L9 12" 
             fill="currentColor" 
             className={animate ? 'animate-pulse' : ''}
           />
+          
+          {/* Left leg */}
           <path 
-            d="M10.5 16L8 21" 
+            d="M9 12L7 17L4 19.5" 
             stroke="currentColor" 
             strokeWidth="1.5" 
             strokeLinecap="round" 
             strokeLinejoin="round" 
           />
+          
+          {/* Right leg */}
           <path 
-            d="M11.8182 7.5L9 10" 
+            d="M13 15L12 19L14 21" 
             stroke="currentColor" 
             strokeWidth="1.5" 
             strokeLinecap="round" 
             strokeLinejoin="round" 
           />
+          
+          {/* Energy wave lines */}
+          <path 
+            d="M21 6L23 6M21 8L22 8M21 4L22 4" 
+            stroke="#F97316" 
+            strokeWidth="1.5" 
+            strokeLinecap="round"
+            className={animate ? 'animate-pulse' : ''}
+          />
+          
+          {/* Left foot */}
+          <circle cx="3.5" cy="20.5" r="1" fill="currentColor" />
+          
+          {/* Right foot */}
+          <circle cx="14.5" cy="21.5" r="1" fill="currentColor" />
         </svg>
         
         {/* Pulse effect circles if animated */}
         {animate && (
           <>
             <div className="absolute inset-0 rounded-full bg-runner/10 animate-ping opacity-75"></div>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-runner to-runner-accent opacity-20 animate-pulse"></div>
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-runner to-runner-energy opacity-20 animate-pulse"></div>
           </>
         )}
       </div>
+      
+      {/* Speed lines if animated */}
+      {animate && (
+        <div className="absolute -right-2 top-1/2 transform -translate-y-1/2">
+          <svg width="12" height="24" viewBox="0 0 12 24" fill="none">
+            <path 
+              d="M1 0L1 24M6 4L6 20M11 8L11 16" 
+              stroke="url(#speed-gradient)" 
+              strokeWidth="2" 
+              strokeLinecap="round"
+              className="animate-pulse" 
+            />
+            <defs>
+              <linearGradient id="speed-gradient" x1="6" y1="0" x2="6" y2="24" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#8B5CF6" />
+                <stop offset="1" stopColor="#F97316" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      )}
     </div>
   );
 };

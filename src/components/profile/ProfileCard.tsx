@@ -1,28 +1,26 @@
 import { useState } from 'react';
 import { Calendar, Edit2, MapPin, Save, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from '../ui/button';
+import { Input } from '../ui/input';
+
+interface ProfileInfo {
+  [key: string]: string;
+}
 
 interface UserProfile {
-  name: string;
-  location: string;
-  since: string;
-  bio: string;
-  stats: {
-    runs: number;
-    distance: number;
-    achievements: number;
-  };
-  preferences: {
-    distanceUnit: 'km' | 'mi';
-    paceUnit: 'min/km' | 'min/mi';
-    weekStart: 'monday' | 'sunday';
-  };
+  personal: ProfileInfo;
+  athletic: ProfileInfo;
+  stats: ProfileInfo;
+  settings?: ProfileInfo;
 }
 
 interface ProfileCardProps {
   profile: UserProfile;
   className?: string;
 }
+
+type SectionKey = keyof UserProfile;
 
 const ProfileCard = ({ profile, className }: ProfileCardProps) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -33,26 +31,21 @@ const ProfileCard = ({ profile, className }: ProfileCardProps) => {
   };
   
   const handleSave = () => {
-    // In un'app reale, qui ci sarebbe una chiamata API per salvare i dati
+    // Here you would typically save the profile to your backend
+    console.log('Saving profile:', editedProfile);
     setIsEditing(false);
   };
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
+  const handleChange = (section: string, field: string, value: string) => {
+    const sectionKey = section as SectionKey;
     
-    if (name.includes('.')) {
-      const [section, field] = name.split('.');
+    if (editedProfile[sectionKey]) {
       setEditedProfile({
         ...editedProfile,
-        [section]: {
-          ...editedProfile[section as keyof typeof editedProfile],
+        [sectionKey]: {
+          ...editedProfile[sectionKey],
           [field]: value
         }
-      });
-    } else {
-      setEditedProfile({
-        ...editedProfile,
-        [name]: value
       });
     }
   };
@@ -77,35 +70,35 @@ const ProfileCard = ({ profile, className }: ProfileCardProps) => {
         
         <div className="mt-16 text-center">
           {isEditing ? (
-            <input
+            <Input
               type="text"
               name="name"
-              value={editedProfile.name}
-              onChange={handleChange}
+              value={editedProfile.personal.name}
+              onChange={(e) => handleChange('personal', 'name', e.target.value)}
               className="text-xl font-semibold text-center border-b border-border focus:outline-none focus:border-runner"
             />
           ) : (
-            <h3 className="text-xl font-semibold">{profile.name}</h3>
+            <h3 className="text-xl font-semibold">{profile.personal.name}</h3>
           )}
           
           <div className="flex justify-center items-center space-x-2 mt-1 text-sm text-muted-foreground">
             <MapPin size={14} />
             {isEditing ? (
-              <input
+              <Input
                 type="text"
                 name="location"
-                value={editedProfile.location}
-                onChange={handleChange}
+                value={editedProfile.personal.location}
+                onChange={(e) => handleChange('personal', 'location', e.target.value)}
                 className="w-40 text-center border-b border-border focus:outline-none focus:border-runner"
               />
             ) : (
-              <span>{profile.location}</span>
+              <span>{profile.personal.location}</span>
             )}
           </div>
           
           <div className="flex justify-center items-center space-x-2 mt-1 text-sm text-muted-foreground">
             <Calendar size={14} />
-            <span>Runner dal {profile.since}</span>
+            <span>Runner dal {profile.personal.since}</span>
           </div>
         </div>
         
@@ -130,13 +123,13 @@ const ProfileCard = ({ profile, className }: ProfileCardProps) => {
             {isEditing ? (
               <textarea
                 name="bio"
-                value={editedProfile.bio}
-                onChange={handleChange}
+                value={editedProfile.personal.bio}
+                onChange={(e) => handleChange('personal', 'bio', e.target.value)}
                 className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-runner resize-none"
                 rows={3}
               />
             ) : (
-              <p className="text-sm text-muted-foreground">{profile.bio}</p>
+              <p className="text-sm text-muted-foreground">{profile.personal.bio}</p>
             )}
           </div>
           
@@ -149,8 +142,8 @@ const ProfileCard = ({ profile, className }: ProfileCardProps) => {
                 {isEditing ? (
                   <select
                     name="preferences.distanceUnit"
-                    value={editedProfile.preferences.distanceUnit}
-                    onChange={handleChange}
+                    value={editedProfile.settings?.distanceUnit}
+                    onChange={(e) => handleChange('settings', 'distanceUnit', e.target.value)}
                     className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-runner"
                   >
                     <option value="km">Chilometri (km)</option>
@@ -158,7 +151,7 @@ const ProfileCard = ({ profile, className }: ProfileCardProps) => {
                   </select>
                 ) : (
                   <p className="text-sm font-medium">
-                    {profile.preferences.distanceUnit === 'km' ? 'Chilometri (km)' : 'Miglia (mi)'}
+                    {profile.settings?.distanceUnit === 'km' ? 'Chilometri (km)' : 'Miglia (mi)'}
                   </p>
                 )}
               </div>
@@ -168,15 +161,15 @@ const ProfileCard = ({ profile, className }: ProfileCardProps) => {
                 {isEditing ? (
                   <select
                     name="preferences.paceUnit"
-                    value={editedProfile.preferences.paceUnit}
-                    onChange={handleChange}
+                    value={editedProfile.settings?.paceUnit}
+                    onChange={(e) => handleChange('settings', 'paceUnit', e.target.value)}
                     className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-runner"
                   >
                     <option value="min/km">min/km</option>
                     <option value="min/mi">min/mi</option>
                   </select>
                 ) : (
-                  <p className="text-sm font-medium">{profile.preferences.paceUnit}</p>
+                  <p className="text-sm font-medium">{profile.settings?.paceUnit}</p>
                 )}
               </div>
               
@@ -185,8 +178,8 @@ const ProfileCard = ({ profile, className }: ProfileCardProps) => {
                 {isEditing ? (
                   <select
                     name="preferences.weekStart"
-                    value={editedProfile.preferences.weekStart}
-                    onChange={handleChange}
+                    value={editedProfile.settings?.weekStart}
+                    onChange={(e) => handleChange('settings', 'weekStart', e.target.value)}
                     className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-runner"
                   >
                     <option value="monday">Lunedì</option>
@@ -194,7 +187,7 @@ const ProfileCard = ({ profile, className }: ProfileCardProps) => {
                   </select>
                 ) : (
                   <p className="text-sm font-medium">
-                    {profile.preferences.weekStart === 'monday' ? 'Lunedì' : 'Domenica'}
+                    {profile.settings?.weekStart === 'monday' ? 'Lunedì' : 'Domenica'}
                   </p>
                 )}
               </div>

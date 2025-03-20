@@ -4,22 +4,22 @@ import { cn } from '@/lib/utils';
 
 interface ChipProps {
   label: string;
-  color?: 'blue' | 'green' | 'purple' | 'orange' | 'gray' | 'energy' | 'accent';
-  size?: 'sm' | 'md';
+  color?: 'purple' | 'orange' | 'green' | 'gradient' | 'gray' | 'energy' | 'accent';
+  size?: 'sm' | 'md' | 'lg';
   className?: string;
 }
 
 const Chip = ({ 
   label, 
-  color = 'blue', 
+  color = 'purple', 
   size = 'md',
   className 
 }: ChipProps) => {
   const colorStyles = {
-    blue: 'bg-runner/10 text-runner-dark',
-    green: 'bg-runner-success/10 text-runner-success',
-    purple: 'bg-runner-accent/10 text-runner-accent',
+    purple: 'bg-runner/10 text-runner-dark',
     orange: 'bg-runner-energy/10 text-runner-energy',
+    green: 'bg-runner-success/10 text-runner-success',
+    gradient: 'bg-gradient-to-r from-runner to-runner-energy text-white',
     gray: 'bg-gray-100 text-gray-800',
     energy: 'bg-gradient-to-r from-runner-energy to-runner-warning text-white',
     accent: 'bg-gradient-to-r from-runner to-runner-accent text-white',
@@ -28,6 +28,7 @@ const Chip = ({
   const sizeStyles = {
     sm: 'text-xs px-2 py-0.5',
     md: 'text-sm px-3 py-1',
+    lg: 'text-base px-4 py-1.5',
   };
 
   return (

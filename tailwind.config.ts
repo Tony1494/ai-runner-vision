@@ -64,11 +64,11 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				runner: {
-					light: '#B4E1FF',
-					DEFAULT: '#0EA5E9',
-					dark: '#0369A1',
+					light: '#E5DEFF',
+					DEFAULT: '#8B5CF6',
+					dark: '#6E59A5',
 					energy: '#F97316',
-					accent: '#8B5CF6',
+					accent: '#9B87F5',
 					success: '#10B981',
 					warning: '#F59E0B'
 				}
