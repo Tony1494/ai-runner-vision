@@ -3,6 +3,9 @@ import { ChevronDown, Download, Settings, Shield } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ProfileCard from '@/components/profile/ProfileCard';
+import ProfileAchievements from '@/components/profile/ProfileAchievements';
+import EquipmentTracker from '@/components/profile/EquipmentTracker';
+import PerformanceTrends from '@/components/profile/PerformanceTrends';
 
 // Dati di esempio per il profilo utente
 const userProfile = {
@@ -48,6 +51,94 @@ const medicalCertificates = [
   }
 ];
 
+// Dati di esempio per gli achievement
+const achievements = [
+  {
+    id: 1,
+    name: "10K Sub-50",
+    description: "Hai completato la tua prima 10K sotto i 50 minuti",
+    icon: "🏃",
+    date: "15 Mar 2023",
+    category: "velocità",
+    level: "silver"
+  },
+  {
+    id: 2,
+    name: "Road Warrior",
+    description: "Hai corso per più di 1000 km in totale",
+    icon: "🛣️",
+    date: "2 Apr 2023",
+    category: "distanza",
+    level: "gold"
+  },
+  {
+    id: 3,
+    name: "Streak Master",
+    description: "Hai corso per 14 giorni consecutivi",
+    icon: "🔥",
+    date: "10 Mag 2023",
+    category: "costanza",
+    level: "bronze"
+  },
+  {
+    id: 4,
+    name: "VO2 Improver",
+    description: "Hai migliorato il tuo VO2max di 3 punti in un mese",
+    icon: "📈",
+    date: "30 Giu 2023",
+    category: "miglioramento",
+    level: "silver"
+  }
+];
+
+// Dati di esempio per l'equipaggiamento
+const equipment = [
+  {
+    id: 1,
+    name: "Nike Pegasus 39",
+    type: "scarpe",
+    brand: "Nike",
+    model: "Pegasus 39",
+    purchaseDate: "10 Gen 2023",
+    distance: 450,
+    sessions: 62,
+    wearPercentage: 45,
+    notes: "Ottime per allenamenti quotidiani"
+  },
+  {
+    id: 2,
+    name: "Adidas Adizero Adios Pro 3",
+    type: "scarpe",
+    brand: "Adidas",
+    model: "Adizero Adios Pro 3",
+    purchaseDate: "15 Mar 2023",
+    distance: 120,
+    sessions: 8,
+    wearPercentage: 20,
+    notes: "Scarpe da gara per 10K e mezza maratona"
+  },
+  {
+    id: 3,
+    name: "Garmin Forerunner 955",
+    type: "tecnologia",
+    brand: "Garmin",
+    model: "Forerunner 955",
+    purchaseDate: "5 Feb 2023",
+    sessions: 180,
+    notes: "Ottimo per tracciare tutti i parametri avanzati"
+  },
+  {
+    id: 4,
+    name: "Maglia tecnica Under Armour",
+    type: "abbigliamento",
+    brand: "Under Armour",
+    model: "Tech 2.0",
+    purchaseDate: "20 Apr 2023",
+    sessions: 25,
+    notes: "Leggera e traspirante"
+  }
+];
+
 const Profile = () => {
   return (
     <div className="min-h-screen flex flex-col page-transition">
@@ -88,6 +179,8 @@ const Profile = () => {
                   </button>
                 </div>
               </div>
+              
+              <ProfileAchievements achievements={achievements} />
             </div>
             
             <div className="lg:col-span-2">
@@ -169,61 +262,9 @@ const Profile = () => {
                 </div>
               </div>
               
-              <div className="glass-card p-6 animate-fade-in">
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-lg font-medium">Statistiche dettagliate</h3>
-                  <select className="text-sm px-3 py-1 border border-border rounded focus:outline-none focus:ring-1 focus:ring-runner">
-                    <option>Ultimi 30 giorni</option>
-                    <option>Ultimi 90 giorni</option>
-                    <option>Ultimo anno</option>
-                    <option>Tutto</option>
-                  </select>
-                </div>
-                
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-runner mb-1">248</div>
-                    <div className="text-xs text-muted-foreground">Allenamenti totali</div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-runner mb-1">1,580</div>
-                    <div className="text-xs text-muted-foreground">Km totali</div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-runner mb-1">156:45</div>
-                    <div className="text-xs text-muted-foreground">Ore totali</div>
-                  </div>
-                  
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-runner mb-1">52,480</div>
-                    <div className="text-xs text-muted-foreground">Calorie bruciate</div>
-                  </div>
-                </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
-                  <div>
-                    <h4 className="text-sm font-medium mb-3">Distribuzione per tipo</h4>
-                    <div className="bg-gray-50 rounded-lg p-4 h-48 flex items-center justify-center">
-                      <div className="text-muted-foreground text-sm">Grafico a torta</div>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="text-sm font-medium mb-3">Evoluzione VO2max</h4>
-                    <div className="bg-gray-50 rounded-lg p-4 h-48 flex items-center justify-center">
-                      <div className="text-muted-foreground text-sm">Grafico a linea</div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="mt-8 pt-6 border-t border-border">
-                  <button className="w-full py-2 text-center text-runner border border-runner rounded-lg hover:bg-runner hover:text-white transition-colors">
-                    Esporta i tuoi dati
-                  </button>
-                </div>
-              </div>
+              <PerformanceTrends />
+              
+              <EquipmentTracker equipment={equipment} />
             </div>
           </div>
         </div>
