@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Footprints, Plus, Trash2 } from 'lucide-react';
 import { Equipment } from '@/types/profile';
 import { Progress } from '@/components/ui/progress';
+import { cn } from '@/lib/utils';
 
 interface EquipmentTrackerProps {
   equipment: Equipment[];
@@ -27,10 +28,10 @@ const EquipmentTracker = ({ equipment }: EquipmentTrackerProps) => {
       </div>
       
       <div className="flex space-x-1 mb-6 bg-gray-100 p-1 rounded-lg">
-        {['scarpe', 'abbigliamento', 'accessori', 'tecnologia'].map((tab) => (
+        {(['scarpe', 'abbigliamento', 'accessori', 'tecnologia'] as const).map((tab) => (
           <button
             key={tab}
-            onClick={() => setActiveTab(tab as any)}
+            onClick={() => setActiveTab(tab)}
             className={`flex-1 py-1.5 text-sm rounded-md transition-colors ${
               activeTab === tab 
                 ? 'bg-white shadow-sm text-runner' 
@@ -73,11 +74,10 @@ const EquipmentTracker = ({ equipment }: EquipmentTrackerProps) => {
                 </div>
                 <Progress 
                   value={item.wearPercentage} 
-                  className="h-2"
-                  indicatorClassName={
+                  className={cn("h-2", 
                     item.wearPercentage > 80 ? 'bg-runner-energy' : 
                     item.wearPercentage > 50 ? 'bg-runner-warning' : 'bg-runner-success'
-                  }
+                  )}
                 />
               </div>
             )}

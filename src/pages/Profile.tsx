@@ -6,9 +6,10 @@ import ProfileCard from '@/components/profile/ProfileCard';
 import ProfileAchievements from '@/components/profile/ProfileAchievements';
 import EquipmentTracker from '@/components/profile/EquipmentTracker';
 import PerformanceTrends from '@/components/profile/PerformanceTrends';
+import { UserProfile, Achievement, Equipment } from '@/types/profile';
 
 // Dati di esempio per il profilo utente
-const userProfile = {
+const userProfile: UserProfile = {
   personal: {
     name: "Marco Rossi",
     location: "Milano, Italia",
@@ -52,7 +53,7 @@ const medicalCertificates = [
 ];
 
 // Dati di esempio per gli achievement
-const achievements = [
+const achievements: Achievement[] = [
   {
     id: 1,
     name: "10K Sub-50",
@@ -92,7 +93,7 @@ const achievements = [
 ];
 
 // Dati di esempio per l'equipaggiamento
-const equipment = [
+const equipment: Equipment[] = [
   {
     id: 1,
     name: "Nike Pegasus 39",
