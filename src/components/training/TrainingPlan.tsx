@@ -53,7 +53,7 @@ const TrainingPlan = ({ plan, className }: TrainingPlanProps) => {
           </div>
           <Chip 
             label={`Settimana ${plan.currentWeek}/${plan.duration}`} 
-            color="blue"
+            color="purple"
           />
         </div>
         
@@ -115,7 +115,7 @@ const TrainingPlan = ({ plan, className }: TrainingPlanProps) => {
               <div className="flex items-center space-x-3">
                 <Chip 
                   label={week.focusArea} 
-                  color={week.id === plan.currentWeek ? "blue" : "gray"} 
+                  color={week.id === plan.currentWeek ? "purple" : "gray"} 
                   size="sm"
                 />
                 <ChevronRight 

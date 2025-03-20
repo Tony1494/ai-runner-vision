@@ -65,7 +65,7 @@ const Dashboard = () => {
               <div>
                 <div className="flex items-center mb-2">
                   <h2 className="text-2xl font-bold">Statistiche settimanali</h2>
-                  <Chip label="Questa settimana" color="blue" className="ml-3" />
+                  <Chip label="Questa settimana" color="purple" className="ml-3" />
                 </div>
                 <p className="text-muted-foreground">15 Maggio - 21 Maggio 2023</p>
               </div>

@@ -9,7 +9,7 @@ const RunningStats = () => {
       <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h3 className="text-xl font-medium">Metriche principali</h3>
         <div className="flex space-x-2">
-          <Chip label="Ultimo aggiornamento: oggi, 14:30" color="blue" size="sm" />
+          <Chip label="Ultimo aggiornamento: oggi, 14:30" color="purple" size="sm" />
           <Chip label="Progressione: positiva" color="green" size="sm" />
         </div>
       </div>

@@ -6,19 +6,26 @@ import ProfileCard from '@/components/profile/ProfileCard';
 
 // Dati di esempio per il profilo utente
 const userProfile = {
-  name: "Marco Rossi",
-  location: "Milano, Italia",
-  since: "Maggio 2021",
-  bio: "Runner appassionato, amo le medie distanze e le gare in città. Mi alleno per migliorare il mio tempo sui 10K e prepararmi per la mia prima mezza maratona.",
+  personal: {
+    name: "Marco Rossi",
+    location: "Milano, Italia",
+    since: "Maggio 2021",
+    bio: "Runner appassionato, amo le medie distanze e le gare in città. Mi alleno per migliorare il mio tempo sui 10K e prepararmi per la mia prima mezza maratona."
+  },
+  athletic: {
+    level: "Intermedio",
+    preferredDistance: "10K",
+    weeklyGoal: "30km"
+  },
   stats: {
     runs: 248,
     distance: 1580,
     achievements: 32
   },
-  preferences: {
-    distanceUnit: 'km' as const,
-    paceUnit: 'min/km' as const,
-    weekStart: 'monday' as const
+  settings: {
+    distanceUnit: 'km',
+    paceUnit: 'min/km',
+    weekStart: 'monday'
   }
 };
 
