@@ -3,17 +3,7 @@ import { Calendar, Edit2, MapPin, Save, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-
-interface ProfileInfo {
-  [key: string]: string;
-}
-
-interface UserProfile {
-  personal: ProfileInfo;
-  athletic: ProfileInfo;
-  stats: ProfileInfo;
-  settings?: ProfileInfo;
-}
+import { UserProfile } from '@/types/profile';
 
 interface ProfileCardProps {
   profile: UserProfile;
