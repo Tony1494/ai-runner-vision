@@ -1,5 +1,5 @@
 
-import { Activity, Brain, Heart, Zap, TrendingUp, Calendar, Dumbbell, Refresh, Award } from 'lucide-react';
+import { Activity, Brain, Heart, Zap, TrendingUp, Calendar, Dumbbell, RefreshCw, Award } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface FeatureCardProps {
@@ -58,7 +58,7 @@ const Features = () => {
       description: "Programmi complementari di forza e mobilità specifici per runner, calibrati per colmare i tuoi deficit biomeccanici e prevenire infortuni."
     },
     {
-      icon: <Refresh size={24} />,
+      icon: <RefreshCw size={24} />,
       title: "Adattamento Continuo",
       description: "L'algoritmo apprende dalle tue risposte fisiologiche e modifica costantemente stimoli e carichi per massimizzare i risultati ed evitare plateau."
     },

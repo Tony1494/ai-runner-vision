@@ -10,14 +10,15 @@ interface TestimonialProps {
   improvement: string;
   photoUrl?: string;
   className?: string;
+  style?: React.CSSProperties;
 }
 
-const Testimonial = ({ quote, author, role, improvement, photoUrl, className }: TestimonialProps) => {
+const Testimonial = ({ quote, author, role, improvement, photoUrl, className, style }: TestimonialProps) => {
   return (
     <div className={cn(
       "glass-card p-6 transition-all hover:shadow-lg",
       className
-    )}>
+    )} style={style}>
       <div className="flex flex-col h-full">
         <div className="mb-4">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-runner/30">

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Calendar, Edit2, MapPin, Save, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -27,7 +26,7 @@ interface ProfileCardProps {
 
 const ProfileCard = ({ profile, className }: ProfileCardProps) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedProfile, setEditedProfile] = useState(profile);
+  const [editedProfile, setEditedProfile] = useState<UserProfile>(profile);
   
   const handleEdit = () => {
     setIsEditing(true);
@@ -46,7 +45,7 @@ const ProfileCard = ({ profile, className }: ProfileCardProps) => {
       setEditedProfile({
         ...editedProfile,
         [section]: {
-          ...editedProfile[section as keyof UserProfile],
+          ...editedProfile[section as keyof typeof editedProfile],
           [field]: value
         }
       });
