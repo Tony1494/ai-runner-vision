@@ -11,7 +11,7 @@ export interface UserProfile {
     distance: number;
     achievements: number;
   };
-  settings: ProfileInfo;
+  settings?: ProfileInfo;
 }
 
 export interface Achievement {
@@ -112,3 +112,55 @@ export interface TrainingRecommendation {
   timeframe: string;
 }
 
+// Interfaccia per il Runner DNA
+export interface RunnerDNA {
+  strengthAreas: {
+    name: string;
+    score: number;
+    percentile: number;
+  }[];
+  weaknessAreas: {
+    name: string;
+    score: number;
+    percentile: number;
+  }[];
+  runningStyle: string;
+  optimalRaces: string[];
+  trainingCompatibility: {
+    high: string[];
+    medium: string[];
+    low: string[];
+  };
+}
+
+// Interfaccia per Training Balance
+export interface TrainingBalance {
+  overallScore: number;
+  components: {
+    name: string;
+    currentValue: number;
+    optimalValue: number;
+    importance: number;
+  }[];
+  recommendations: string[];
+  history: {
+    date: string;
+    score: number;
+  }[];
+}
+
+// Interfaccia per Readiness
+export interface ReadinessIndicator {
+  currentScore: number;
+  factors: {
+    name: string;
+    value: number;
+    impact: number;
+    trend: 'positive' | 'neutral' | 'negative';
+  }[];
+  recommendation: string;
+  history: {
+    date: string;
+    score: number;
+  }[];
+}

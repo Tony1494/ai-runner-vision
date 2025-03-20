@@ -14,6 +14,8 @@ const EquipmentTracker = ({ equipment }: EquipmentTrackerProps) => {
   
   const filteredEquipment = equipment.filter(item => item.type === activeTab);
   
+  const tabTypes = ['scarpe', 'abbigliamento', 'accessori', 'tecnologia'] as const;
+  
   return (
     <div className="glass-card p-6 animate-fade-in">
       <div className="flex justify-between items-center mb-6">
@@ -28,7 +30,7 @@ const EquipmentTracker = ({ equipment }: EquipmentTrackerProps) => {
       </div>
       
       <div className="flex space-x-1 mb-6 bg-gray-100 p-1 rounded-lg">
-        {(['scarpe', 'abbigliamento', 'accessori', 'tecnologia'] as const).map((tab) => (
+        {tabTypes.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
