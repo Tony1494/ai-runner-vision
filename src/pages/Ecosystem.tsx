@@ -1,9 +1,8 @@
-
-import { ArrowRight, Smartphone, Watch, CloudCheck, Zap, Cpu, Workflow, ShieldCheck, Gift } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, Smartphone, Watch, Cloud, Zap, Cpu, Workflow, ShieldCheck, Gift } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import Chip from '@/components/ui/Chip';
-import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
 const Ecosystem = () => {
@@ -113,7 +112,7 @@ const Ecosystem = () => {
                   <div className="flex">
                     <div className="mr-4 mt-1">
                       <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                        <CloudCheck size={20} />
+                        <Cloud size={20} />
                       </div>
                     </div>
                     <div>
